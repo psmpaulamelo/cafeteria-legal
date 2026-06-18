@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 
@@ -9,28 +9,11 @@ export default function OrdersPage() {
 
   const {
     items,
-    isLoaded,
     removeItem,
     clearCart,
     increaseQuantity,
     decreaseQuantity,
   } = useCart();
-
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted && isLoaded && items.length === 0) {
-      router.push("/");
-    }
-  }, [mounted, isLoaded, items, router]);
-
-  if (!mounted || !isLoaded) {
-    return null;
-  }
 
   function handleCheckout() {
     router.push("/payment");
