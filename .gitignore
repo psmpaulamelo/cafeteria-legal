@@ -1,0 +1,28 @@
+# Node
+backend/node_modules/
+frontend/node_modules/
+
+# Build
+backend/dist/
+frontend/.next/
+
+# Environment
+.env
+*.env
+
+# Permitir arquivos de exemplo
+!backend/.env.example
+!frontend/.env.example
+
+# Logs
+*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Sistema
+.DS_Store
+Thumbs.db

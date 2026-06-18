@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+ provider = "postgresql"
+ url      = env("DATABASE_URL")
+}
+
+enum IngredientType {
+  base
+  additional
+}
+
+enum DrinkSize {
+  small
+  medium
+  large
+}
+
+enum ConsumptionType {
+  local
+  takeaway
+}
+
+
+model Drink {
+  id            Int             @id @default(autoincrement())
+  name          String
+  description   String
+  image         String
+  ingredients   String[]
+  price         Float
+  createdAt     DateTime        @default(now())
+}
+
+
+
+model Ingredient {
+  id        Int             @id @default(autoincrement())
+  name      String
+  type      IngredientType
+  price     Float
+  available Boolean         @default(true)
+  createdAt DateTime        @default(now())
+}
+
+model CustomDrink {
+  id             Int               @id @default(autoincrement())
+  generatedName  String
+  ingredients    String[]
+  totalPrice     Float
+  size           DrinkSize
+  consumption    ConsumptionType
+  createdAt      DateTime          @default(now())
+}
+
+
