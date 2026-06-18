@@ -19,6 +19,7 @@ coverage/
 backend/.env
 frontend/.env
 frontend/.env.local
+next-env.d.ts
 
 # Permitir arquivos de exemplo
 !backend/.env.example
