@@ -9,6 +9,8 @@ async function bootstrap() {
 
   app.enableCors();
 
+  app.setGlobalPrefix('api');
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -19,7 +21,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Cafeteria Legal API')
-    .setDescription('API para gerenciamento da cafeteria')
+    .setDescription(
+      'API para gerenciamento da cafeteria',
+    )
     .setVersion('1.0')
     .build();
 
@@ -29,9 +33,13 @@ async function bootstrap() {
 
   await app.listen(3001);
 
-  console.log('Backend running on http://localhost:3001');
+  console.log(
+    'Backend running on http://localhost:3001',
+  );
 
-  console.log('Swagger disponível em http://localhost:3001/api');
+  console.log(
+    'Swagger disponível em http://localhost:3001/api',
+  );
 }
 
 void bootstrap();

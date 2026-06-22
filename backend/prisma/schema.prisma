@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
- provider = "postgresql"
- url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 enum IngredientType {
@@ -23,36 +23,94 @@ enum ConsumptionType {
   takeaway
 }
 
-
-model Drink {
-  id            Int             @id @default(autoincrement())
-  name          String
-  description   String
-  image         String
-  ingredients   String[]
-  price         Float
-  createdAt     DateTime        @default(now())
+enum PaymentMethod {
+  credit
+  debit
+  pix
 }
 
+enum OrderStatus {
+  received
+  preparing
+  ready
+  delivered
+  cancelled
+}
 
+model Drink {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  image       String
+  ingredients String[]
+  price       Float
+  createdAt   DateTime @default(now())
+
+  orderItems OrderItem[]
+}
 
 model Ingredient {
-  id        Int             @id @default(autoincrement())
+  id        Int            @id @default(autoincrement())
   name      String
   type      IngredientType
   price     Float
-  available Boolean         @default(true)
-  createdAt DateTime        @default(now())
+  available Boolean        @default(true)
+  createdAt DateTime       @default(now())
 }
 
 model CustomDrink {
-  id             Int               @id @default(autoincrement())
-  generatedName  String
-  ingredients    String[]
-  totalPrice     Float
-  size           DrinkSize
-  consumption    ConsumptionType
-  createdAt      DateTime          @default(now())
+  id            Int             @id @default(autoincrement())
+  generatedName String
+  ingredients   String[]
+  totalPrice    Float
+  size          DrinkSize
+  consumption   ConsumptionType
+  createdAt     DateTime        @default(now())
+
+  orderItems OrderItem[]
 }
 
+model Customer {
+  id    Int     @id @default(autoincrement())
+  name  String
+  email String?
+  phone String?
 
+  createdAt DateTime @default(now())
+
+  orders Order[]
+}
+
+model Order {
+  id          Int    @id @default(autoincrement())
+  orderNumber String @unique
+  totalPrice  Float
+
+  paymentMethod PaymentMethod
+  status        OrderStatus
+
+  consumptionType ConsumptionType
+
+  createdAt DateTime @default(now())
+
+  customerId Int?
+  customer   Customer? @relation(fields: [customerId], references: [id])
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id Int @id @default(autoincrement())
+
+  quantity  Int
+  unitPrice Float
+
+  orderId Int
+  order   Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  drinkId Int?
+  drink   Drink? @relation(fields: [drinkId], references: [id])
+
+  customDrinkId Int?
+  customDrink   CustomDrink? @relation(fields: [customDrinkId], references: [id])
+}
