@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useState,
+  useMemo
 } from "react";
 
 export type CartItem = {
@@ -47,28 +48,32 @@ const CartContext =
 
 export function CartProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
-  const [items, setItems] =
-    useState<CartItem[]>(() => {
-      if (
-        typeof window === "undefined"
-      ) {
-        return [];
-      }
+}>) {
+  const [items, setItems] = useState<CartItem[]>([]);
+const [isLoaded, setIsLoaded] = useState(false);
 
-      const stored =
-        localStorage.getItem(
-          "cart"
-        );
+useEffect(() => {
+  const stored = globalThis.window.localStorage.getItem("cart");
 
-      return stored
-        ? JSON.parse(stored)
-        : [];
-    });
+  if (stored) {
+    setItems(JSON.parse(stored));
+  }
 
-  const isLoaded = true;
+  setIsLoaded(true);
+}, []);
+
+useEffect(() => {
+  if (!isLoaded) return;
+
+  globalThis.window.localStorage.setItem(
+    "cart",
+    JSON.stringify(items)
+  );
+}, [items, isLoaded]);
+
+
 
   useEffect(() => {
     localStorage.setItem(
@@ -159,18 +164,21 @@ export function CartProvider({
     );
   }
 
+    const value = useMemo(
+    () => ({
+      items,
+      isLoaded,
+      addItem,
+      removeItem,
+      clearCart,
+      increaseQuantity,
+      decreaseQuantity,
+    }),
+    [items, isLoaded]
+  );
   return (
-    <CartContext.Provider
-      value={{
-        items,
-        isLoaded,
-        addItem,
-        removeItem,
-        clearCart,
-        increaseQuantity,
-        decreaseQuantity,
-      }}
-    >
+   <CartContext.Provider value={value}>
+ 
       {children}
     </CartContext.Provider>
   );
