@@ -3,39 +3,37 @@
 import { useState } from "react";
 import Link from "next/link";
 
-type OrderItem = {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-};
+  type OrderItem = {
+    id: number;
+    quantity: number;
+    unitPrice: number;
+    drink?: {
+      name: string;
+    };
+    customDrink?: {
+      generatedName: string;
+    };
+  };
 
-type Order = {
-  orderNumber: number;
-  status: string;
-  paymentMethod: string;
-  total: number;
-  createdAt: string;
-  items: OrderItem[];
-};
+  type Order = {
+    orderNumber: string;
+    status: string;
+    paymentMethod: string;
+    totalPrice: number;
+    createdAt: string;
+    items: OrderItem[];
+  };
 
-export default function SuccessPage() {
-  const [order] = useState<Order | null>(
-    () => {
-      if (typeof window === "undefined") {
-        return null;
-      }
-
-      const data =
-        localStorage.getItem(
-          "lastOrder"
-        );
-
-      return data
-        ? JSON.parse(data)
-        : null;
+  export default function SuccessPage() {
+  const [order] = useState<Order | null>(() => {
+    if (typeof window === "undefined") {
+      return null;
     }
-  );
+
+    const data = localStorage.getItem("lastOrder");
+
+    return data ? JSON.parse(data) : null;
+  });
 
   if (!order) {
     return (
@@ -171,45 +169,54 @@ export default function SuccessPage() {
           </p>
         </div>
 
-        {/* Itens */}
-        <div className="mt-8">
-          <h3
-            className="
-              mb-4
-              text-xl
-              font-bold
-            "
-          >
-            Itens do Pedido
-          </h3>
+          {/* Itens */}
+            <div className="mt-8">
+              <h3 className="mb-4 text-xl font-bold">
+                Itens do Pedido
+              </h3>
 
-          {order.items.map(
-            (item) => (
-              <div
-                key={item.id}
-                className="
-                  flex
-                  justify-between
-                  border-b
-                  py-3
-                "
-              >
-                <span>
-                  {item.name} ×{" "}
-                  {item.quantity}
-                </span>
+              {order.items.map((item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between border-b py-3"
+                  >
+                    <div>
+                      <p className="font-medium">
+                        {item.drink?.name ??
+                          item.customDrink?.generatedName ??
+                          "Café Especial"}
+                      </p>
 
-                <span>
-                  R$
-                  {(
-                    item.price *
-                    item.quantity
-                  ).toFixed(2)}
-                </span>
+                      <p className="text-sm text-stone-500">
+                        Quantidade: {item.quantity}
+                      </p>
+                    </div>
+
+                    <span className="font-semibold text-amber-700">
+                      R$
+                      {(
+                        (item.unitPrice ?? 0) *
+                        (item.quantity ?? 1)
+                      ).toFixed(2)}
+                    </span>
+                  </div>
+                );
+              })}
+
+              <div className="mt-6 rounded-2xl bg-amber-50 p-4">
+                <div className="flex justify-between">
+                  <span className="text-lg font-bold">
+                    Total do Pedido
+                  </span>
+
+                  <span className="text-2xl font-extrabold text-amber-600">
+                    R$
+                    {(order.totalPrice ?? 0).toFixed(2)}
+                  </span>
+                </div>
               </div>
-            )
-          )}
-        </div>
+            </div>
         {/* Retirada */}
         <div
           className="
@@ -219,14 +226,14 @@ export default function SuccessPage() {
             p-6
             text-center
           "
-        >
+          >
           <h3
             className="
               text-2xl
               font-bold
               text-green-700
             "
-          >
+            >
             ☕ Pedido em Preparação
           </h3>
 
@@ -246,49 +253,49 @@ export default function SuccessPage() {
               font-semibold
               text-green-700
             "
-          >
+            >
             Tempo estimado:
             10 a 15 minutos
           </p>
-        </div>
+          </div>
 
-        {/* Botões */}
-        <div
-          className="
-            mt-8
-            flex
-            flex-wrap
-            gap-4
-          "
-        >
-          <Link
-            href="/"
+          {/* Botões */}
+          <div
             className="
-              rounded-full
-              bg-amber-500
-              px-6
-              py-3
-              text-white
-              transition
-              hover:bg-amber-600
+              mt-8
+              flex
+              flex-wrap
+              gap-4
             "
-          >
-            Voltar para Home
-          </Link>
+            >
+            <Link
+              href="/"
+              className="
+                rounded-full
+                bg-amber-500
+                px-6
+                py-3
+                text-white
+                transition
+                hover:bg-amber-600
+              "
+              >
+              Voltar para Home
+            </Link>
 
-          <Link
-            href="/"
-            className="
-              rounded-full
-              bg-stone-200
-              px-6
-              py-3
-              transition
-              hover:bg-stone-300
-            "
-          >
-            Fazer Novo Pedido
-          </Link>
+              <Link
+                href="/"
+                className="
+                  rounded-full
+                  bg-stone-200
+                  px-6
+                  py-3
+                  transition
+                  hover:bg-stone-300
+                "
+                >
+                Fazer Novo Pedido
+              </Link>
         </div>
       </div>
     </main>

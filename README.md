@@ -1,239 +1,314 @@
 # ☕ Cafeteria Legal
 
-Sistema Full Stack para gerenciamento e personalização de bebidas, desenvolvido com foco em qualidade de software, arquitetura em camadas e testes automatizados.
+<div align="center">
 
-O projeto simula uma cafeteria digital, permitindo a criação de bebidas personalizadas, gerenciamento do carrinho, fluxo de pagamento e acompanhamento do pedido.
+Sistema Full Stack desenvolvido para simular um ambiente real de uma cafeteria, permitindo pedidos, bebidas personalizadas e fluxo completo de compra.
 
----
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![React](https://img.shields.io/badge/React-19-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![NestJS](https://img.shields.io/badge/NestJS-red)
+![Prisma](https://img.shields.io/badge/Prisma-ORM-green)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-blue)
+![Swagger](https://img.shields.io/badge/Swagger-API-green)
 
-# Arquitetura
-
-O projeto está organizado em um monorepo contendo:
-
-```
-cafeteria-legal
-│
-├── backend
-│
-└── frontend
-```
-
-### Backend
-
-- NestJS
-- Prisma ORM
-- PostgreSQL
-- Swagger
-- DTOs e validações
-- Arquitetura em camadas
-
-### Frontend
-
-- Next.js
-- TypeScript
-- Context API
-- Tailwind CSS
-- Componentização
+</div>
 
 ---
 
-# Tecnologias Utilizadas
+# 📖 Sobre o Projeto
 
-## Backend
+O **Cafeteria Legal** foi criado para reproduzir um cenário próximo ao dia a dia de desenvolvimento e QA, contendo:
 
-- NestJS
-- Prisma
-- PostgreSQL
-- Swagger
-- Class Validator
-- TypeScript
+* Frontend em Next.js
+* Backend em NestJS
+* Banco PostgreSQL
+* Prisma ORM
+* API REST documentada com Swagger
+* Fluxo completo de compra
+* Geração de bebidas personalizadas
+* Persistência dos pedidos
+
+---
+
+# 📸 Telas
+
+## Home
+
+> Adicione aqui uma captura da Home
+
+## Bebidas Personalizadas
+
+> Adicione aqui uma captura da tela de bebidas personalizadas
+
+## Carrinho
+
+> Adicione aqui uma captura da tela de pedidos
+
+## Pagamento
+
+> Adicione aqui uma captura da tela de pagamento
+
+## Pedido Realizado
+
+> Adicione aqui uma captura da tela de sucesso
+
+---
+
+# 🛠 Tecnologias
 
 ## Frontend
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
+* Next.js
+* React
+* TypeScript
+* TailwindCSS
+
+## Backend
+
+* NestJS
+* Prisma ORM
+* PostgreSQL
+* Swagger
 
 ## Ferramentas
 
-- Git
-- GitHub
-- VSCode
-- Postman
-- Codex (OpenAI)
-- ChatGPT
+* Git
+* GitHub
+* npm
+* Concurrently
 
 ---
 
-# Funcionalidades
+# 📂 Estrutura do Projeto
 
-### Cardápio de bebidas
-
-- Listagem de bebidas
-- Seleção de tamanho
-- Tipo de consumo
-- Adição ao carrinho
-
-### Bebidas personalizadas
-
-- Seleção de base
-- Escolha de ingredientes adicionais
-- Geração automática do nome da bebida
-- Cálculo do valor total
-
-### Carrinho
-
-- Adicionar itens
-- Alterar quantidade
-- Remover produtos
-- Limpar carrinho
-
-### Pagamento
-
-- Cartão de crédito
-- Cartão de débito
-- PIX
-- Dinheiro
-
-### Pedido
-
-- Resumo do pedido
-- Número do pedido
-- Tempo estimado de preparo
-
----
-
-# Estrutura do Projeto
-
-```
-backend/
-├── prisma
-├── src
-│   ├── custom-drinks
-│   ├── drinks
-│   ├── ingredients
-│   ├── recipes
-│   └── prisma
-└── .env.example
-
-frontend/
-├── app
-├── components
-├── constants
-├── context
-├── public
-├── services
-└── types
+```bash
+cafeteria-legal
+│
+├── frontend
+│
+├── backend
+│
+├── package.json
+│
+└── README.md
 ```
 
 ---
 
-# Variáveis de Ambiente
+# 🚀 Instalação
 
-O arquivo `.env` não é versionado.
+Clone o projeto:
 
-Utilize o arquivo:
-
-```
-backend/.env.example
+```bash
+git clone https://github.com/psmpaulamelo/cafeteria-legal.git
 ```
 
-para criar seu ambiente local.
+Entre na pasta:
 
----
+```bash
+cd cafeteria-legal
+```
 
-# Executando o Backend
-
-Entrar na pasta:
+Instale as dependências do backend:
 
 ```bash
 cd backend
-```
-
-Instalar dependências:
-
-```bash
 npm install
 ```
 
-Executar migrations:
+Instale as dependências do frontend:
 
 ```bash
-npx prisma migrate deploy
+cd ../frontend
+npm install
 ```
 
-Executar aplicação:
+Instale as dependências da raiz do projeto:
 
 ```bash
-npm run start:dev
-```
-
-Swagger:
-
-```
-http://localhost:3001/api
+cd ..
+npm install
 ```
 
 ---
 
-# Executando o Frontend
+# ▶️ Executando a Aplicação
 
-Entrar na pasta:
-
-```bash
-cd frontend
-```
-
-Instalar dependências:
-
-```bash
-npm install
-```
-
-Executar aplicação:
+Com apenas um comando:
 
 ```bash
 npm run dev
 ```
 
-Aplicação:
+Este comando inicia:
 
-```
+### Frontend
+
+```text
 http://localhost:3000
 ```
 
----
+### Backend
 
+```text
+http://localhost:3001
+```
 
-# Inteligência Artificial
+### Swagger
 
-Durante o desenvolvimento foram utilizadas ferramentas de IA para apoio à engenharia de software e produtividade:
-
-- ChatGPT
-- Codex (OpenAI)
-
-As ferramentas foram utilizadas para suporte em:
-
-- Arquitetura
-- Refatoração
-- Componentização
-- Documentação
-- Geração de código
-- Estratégia de testes
+```text
+http://localhost:3001/api
+```
 
 ---
 
-# Autor
+# 🔄 Fluxo da Aplicação
 
-Paula Melo
+```text
+Home
+ ↓
+Catálogo
+ ↓
+Bebidas Personalizadas
+ ↓
+Adicionar ao Carrinho
+ ↓
+Pedidos (/orders)
+ ↓
+Pagamento (/payment)
+ ↓
+Pedido Realizado (/success)
+```
 
-QA Engineer | Quality Assurance
+---
 
-LinkedIn:
+# ☕ Fluxo de Compra
+
+### Escolha da bebida
+
+* Bebidas tradicionais
+* Bebidas personalizadas
+
+### Pedido
+
+* Visualização dos itens
+* Alteração de quantidade
+* Remoção de produtos
+* Valor total
+
+### Pagamento
+
+Métodos disponíveis:
+
+* Crédito
+* Débito
+* PIX
+
+### Finalização
+
+O pedido é enviado para a API e armazenado no banco de dados.
+
+---
+
+# 📚 Documentação da API
+
+Swagger:
+
+```text
+http://localhost:3001/api
+```
+
+---
+
+# Principais Endpoints
+
+## Drinks
+
+```http
+GET /api/drinks
+POST /api/drinks
+```
+
+## Ingredients
+
+```http
+GET /api/ingredients
+POST /api/ingredients
+```
+
+## Custom Drinks
+
+```http
+POST /api/custom-drinks/generate
+GET /api/custom-drinks
+```
+
+## Orders
+
+```http
+POST /api/orders
+GET /api/orders
+GET /api/orders/:id
+PATCH /api/orders/:id/status
+DELETE /api/orders/:id
+```
+
+---
+
+# 🎯 Objetivo
+
+O projeto foi desenvolvido com foco em reproduzir um ambiente próximo ao encontrado em projetos reais, permitindo:
+
+* Testes Funcionais
+* Testes de API
+* Testes de Integração
+* Testes E2E
+* Automação
+* Validação de Banco de Dados
+
+---
+
+# 🧪 Quality Assurance
+
+✔ Testes Funcionais
+
+✔ Testes de API
+
+✔ Testes de Integração
+
+✔ Automação Web
+
+✔ Validação de Banco de Dados
+
+✔ Testes End-to-End
+
+---
+
+# 👩‍💻 Desenvolvido por
+
+## Paula Melo
+
+**QA Engineer | Software Quality | Test Automation**
+
+### LinkedIn
 
 https://www.linkedin.com/in/paulasmelo/
 
-GitHub:
+### GitHub
 
 https://github.com/psmpaulamelo
+
+---
+
+## 🚀 Próximas Evoluções
+
+* [ ] Implementar testes automatizados
+* [ ] Pipeline CI/CD
+* [ ] Dockerização da aplicação
+* [ ] Testes E2E com Playwright
+* [ ] Monitoramento e observabilidade
+* [ ] Deploy em nuvem
+* [ ] Dashboard administrativo
+* [ ] Histórico de pedidos
+* [ ] Sistema de autenticação

@@ -100,17 +100,17 @@ model Order {
 }
 
 model OrderItem {
-  id Int @id @default(autoincrement())
+  id            Int @id @default(autoincrement())
 
-  quantity  Int
-  unitPrice Float
+  quantity      Int
+  unitPrice     Float
 
-  orderId Int
-  order   Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-
-  drinkId Int?
-  drink   Drink? @relation(fields: [drinkId], references: [id])
+  drinkId       Int?
+  drink         Drink? @relation(fields: [drinkId], references: [id])
 
   customDrinkId Int?
   customDrink   CustomDrink? @relation(fields: [customDrinkId], references: [id])
+
+  orderId       Int
+  order         Order @relation(fields: [orderId], references: [id])
 }

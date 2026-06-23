@@ -75,13 +75,7 @@ useEffect(() => {
 
 
 
-  useEffect(() => {
-    localStorage.setItem(
-      "cart",
-      JSON.stringify(items)
-    );
-  }, [items]);
-
+  
   function addItem(
     item: Omit<CartItem, "quantity">
   ) {
