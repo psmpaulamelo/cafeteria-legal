@@ -2,15 +2,29 @@
 
 <div align="center">
 
-Sistema Full Stack desenvolvido para simular um ambiente real de uma cafeteria, permitindo pedidos, bebidas personalizadas e fluxo completo de compra.
+Sistema Full Stack desenvolvido para reproduzir a experiência de uma cafeteria digital moderna, permitindo pedidos, bebidas personalizadas e gerenciamento completo do fluxo de compra.
+
+<br>
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black)
 ![React](https://img.shields.io/badge/React-19-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![NestJS](https://img.shields.io/badge/NestJS-red)
-![Prisma](https://img.shields.io/badge/Prisma-ORM-green)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-blue)
-![Swagger](https://img.shields.io/badge/Swagger-API-green)
+![NestJS](https://img.shields.io/badge/NestJS-E0234E)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D)
+![Vercel](https://img.shields.io/badge/Vercel-black)
+![Render](https://img.shields.io/badge/Render-46E3B7)
+
+<br>
+
+### 🚀 Aplicação em Produção
+
+**Frontend:** https://cafeteria-legal.vercel.app/
+
+**Backend:** https://cafeteria-legal-api.onrender.com
+
+**Swagger:** https://cafeteria-legal-api.onrender.com/api
 
 </div>
 
@@ -18,16 +32,20 @@ Sistema Full Stack desenvolvido para simular um ambiente real de uma cafeteria, 
 
 # 📖 Sobre o Projeto
 
-O **Cafeteria Legal** foi criado para reproduzir um cenário próximo ao dia a dia de desenvolvimento e QA, contendo:
+O **Cafeteria Legal** é uma aplicação Full Stack desenvolvida para simular o funcionamento de uma cafeteria digital, oferecendo uma experiência completa desde a escolha da bebida até a finalização do pedido.
 
-* Frontend em Next.js
-* Backend em NestJS
-* Banco PostgreSQL
-* Prisma ORM
-* API REST documentada com Swagger
-* Fluxo completo de compra
-* Geração de bebidas personalizadas
-* Persistência dos pedidos
+A aplicação foi construída utilizando uma arquitetura moderna baseada em **Next.js**, **NestJS**, **Prisma** e **PostgreSQL**, com frontend, backend e banco de dados hospedados em ambientes distintos.
+
+## ✨ Funcionalidades
+
+* ☕ Catálogo de bebidas
+* 🎨 Criação de bebidas personalizadas
+* 🛒 Carrinho de compras
+* 📦 Gerenciamento de pedidos
+* 💳 Fluxo completo de pagamento
+* 📚 API REST documentada com Swagger
+* 💾 Persistência dos dados em PostgreSQL
+* ☁️ Deploy em nuvem
 
 ---
 
@@ -35,23 +53,40 @@ O **Cafeteria Legal** foi criado para reproduzir um cenário próximo ao dia a d
 
 ## Home
 
-![alt text](image.png)
+![Home](image.png)
 
 ## Bebidas Personalizadas
 
-![alt text](image-1.png)
+![Custom Drinks](image-1.png)
 
 ## Carrinho
 
-![alt text](image-2.png)
+![Cart](image-2.png)
 
 ## Pagamento
 
-![alt text](image-3.png)
+![Payment](image-3.png)
 
 ## Pedido Realizado
 
-![alt text](image-4.png)
+![Success](image-4.png)
+
+---
+
+# 🏗 Arquitetura
+
+```text
+Frontend (Next.js)
+        │
+        ▼
+Backend API (NestJS)
+        │
+        ▼
+Prisma ORM
+        │
+        ▼
+PostgreSQL (Supabase)
+```
 
 ---
 
@@ -62,7 +97,7 @@ O **Cafeteria Legal** foi criado para reproduzir um cenário próximo ao dia a d
 * Next.js
 * React
 * TypeScript
-* TailwindCSS
+* Tailwind CSS
 
 ## Backend
 
@@ -70,6 +105,12 @@ O **Cafeteria Legal** foi criado para reproduzir um cenário próximo ao dia a d
 * Prisma ORM
 * PostgreSQL
 * Swagger
+
+## Infraestrutura
+
+* Vercel
+* Render
+* Supabase
 
 ## Ferramentas
 
@@ -98,33 +139,35 @@ cafeteria-legal
 
 # 🚀 Instalação
 
-Clone o projeto:
+Clone o repositório:
 
 ```bash
 git clone https://github.com/psmpaulamelo/cafeteria-legal.git
 ```
 
-Entre na pasta:
+Acesse a pasta do projeto:
 
 ```bash
 cd cafeteria-legal
 ```
 
-Instale as dependências do backend:
+Instale as dependências:
+
+### Backend
 
 ```bash
 cd backend
 npm install
 ```
 
-Instale as dependências do frontend:
+### Frontend
 
 ```bash
 cd ../frontend
 npm install
 ```
 
-Instale as dependências da raiz do projeto:
+### Dependências da raiz
 
 ```bash
 cd ..
@@ -133,15 +176,13 @@ npm install
 
 ---
 
-# ▶️ Executando a Aplicação
+# ▶️ Executando Localmente
 
 Com apenas um comando:
 
 ```bash
 npm run dev
 ```
-
-Este comando inicia:
 
 ### Frontend
 
@@ -172,13 +213,13 @@ Catálogo
  ↓
 Bebidas Personalizadas
  ↓
-Adicionar ao Carrinho
+Carrinho
  ↓
-Pedidos (/orders)
+Pedidos
  ↓
-Pagamento (/payment)
+Pagamento
  ↓
-Pedido Realizado (/success)
+Pedido Realizado
 ```
 
 ---
@@ -190,12 +231,12 @@ Pedido Realizado (/success)
 * Bebidas tradicionais
 * Bebidas personalizadas
 
-### Pedido
+### Carrinho
 
 * Visualização dos itens
 * Alteração de quantidade
 * Remoção de produtos
-* Valor total
+* Cálculo do valor total
 
 ### Pagamento
 
@@ -207,44 +248,47 @@ Métodos disponíveis:
 
 ### Finalização
 
-O pedido é enviado para a API e armazenado no banco de dados.
+Após a confirmação do pagamento, o pedido é enviado para a API e armazenado no banco de dados.
 
 ---
 
-# 📚 Documentação da API
+# 📚 API
 
-Swagger:
+### Swagger
 
 ```text
-http://localhost:3001/api
+https://cafeteria-legal-api.onrender.com/api
 ```
 
----
+## Principais Endpoints
 
-# Principais Endpoints
-
-## Drinks
+### Drinks
 
 ```http
 GET /api/drinks
 POST /api/drinks
+PATCH /api/drinks/:id
+DELETE /api/drinks/:id
 ```
 
-## Ingredients
+### Ingredients
 
 ```http
 GET /api/ingredients
 POST /api/ingredients
+PATCH /api/ingredients/:id
+DELETE /api/ingredients/:id
 ```
 
-## Custom Drinks
+### Custom Drinks
 
 ```http
 POST /api/custom-drinks/generate
 GET /api/custom-drinks
+DELETE /api/custom-drinks/:id
 ```
 
-## Orders
+### Orders
 
 ```http
 POST /api/orders
@@ -256,32 +300,14 @@ DELETE /api/orders/:id
 
 ---
 
-# 🎯 Objetivo
+# ☁️ Deploy
 
-O projeto foi desenvolvido com foco em reproduzir um ambiente próximo ao encontrado em projetos reais, permitindo:
-
-* Testes Funcionais
-* Testes de API
-* Testes de Integração
-* Testes E2E
-* Automação
-* Validação de Banco de Dados
-
----
-
-# 🧪 Quality Assurance
-
-✔ Testes Funcionais
-
-✔ Testes de API
-
-✔ Testes de Integração
-
-✔ Automação Web
-
-✔ Validação de Banco de Dados
-
-✔ Testes End-to-End
+| Serviço        | Plataforma            |
+| -------------- | --------------------- |
+| Frontend       | Vercel                |
+| Backend        | Render                |
+| Banco de Dados | PostgreSQL (Supabase) |
+| Documentação   | Swagger               |
 
 ---
 
@@ -291,24 +317,12 @@ O projeto foi desenvolvido com foco em reproduzir um ambiente próximo ao encont
 
 **QA Engineer | Software Quality | Test Automation**
 
-### LinkedIn
-
+🔗 LinkedIn
 https://www.linkedin.com/in/paulasmelo/
 
-### GitHub
-
+💻 GitHub
 https://github.com/psmpaulamelo
 
 ---
 
-## 🚀 Próximas Evoluções
-
-* [ ] Implementar testes automatizados
-* [ ] Pipeline CI/CD
-* [ ] Dockerização da aplicação
-* [ ] Testes E2E com Playwright
-* [ ] Monitoramento e observabilidade
-* [ ] Deploy em nuvem
-* [ ] Dashboard administrativo
-* [ ] Histórico de pedidos
-* [ ] Sistema de autenticação
+⭐ Se este projeto foi útil, considere deixar uma estrela no repositório.
