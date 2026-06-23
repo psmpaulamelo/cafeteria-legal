@@ -86,7 +86,7 @@ export default function CustomDrinksPage() {
     async function loadIngredients() {
       try {
         const response = await fetch(
-          "http://localhost:3001/api/ingredients"
+          "https://cafeteria-legal-api.onrender.com/api/ingredients"
         );
 
         const data = await response.json();
@@ -194,7 +194,7 @@ export default function CustomDrinksPage() {
       };
 
       const response = await fetch(
-        "http://localhost:3001/api/custom-drinks/generate",
+        "https://cafeteria-legal-api.onrender.com/api/custom-drinks/generate",
         {
           method: "POST",
           headers: {

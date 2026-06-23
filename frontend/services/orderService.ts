@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3001/api/orders";
+const API_URL = "https://cafeteria-legal-api.onrender.com/api/orders";
 
 export async function createOrder(data: any) {
   const response = await fetch(API_URL, {
