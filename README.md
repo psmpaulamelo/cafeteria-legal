@@ -35,23 +35,23 @@ O **Cafeteria Legal** foi criado para reproduzir um cenário próximo ao dia a d
 
 ## Home
 
-> Adicione aqui uma captura da Home
+![alt text](image.png)
 
 ## Bebidas Personalizadas
 
-> Adicione aqui uma captura da tela de bebidas personalizadas
+![alt text](image-1.png)
 
 ## Carrinho
 
-> Adicione aqui uma captura da tela de pedidos
+![alt text](image-2.png)
 
 ## Pagamento
 
-> Adicione aqui uma captura da tela de pagamento
+![alt text](image-3.png)
 
 ## Pedido Realizado
 
-> Adicione aqui uma captura da tela de sucesso
+![alt text](image-4.png)
 
 ---
 
